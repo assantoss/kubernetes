@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVOlumeClaim
+metadata:
+  name: configuracao-mysql
+spec:
+  AccessMode:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
