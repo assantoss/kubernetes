@@ -1,0 +1,72 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2019-10-03T16:47:53Z"
+    generation: 1
+    labels:
+      name: aplicacao-pod
+    name: aplicacao-deployment
+    namespace: default
+    resourceVersion: "197453"
+    selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/aplicacao-deployment
+    uid: 5a561fb9-8e53-4693-8e71-bc90d4e9e58b
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 6
+    revisionHistoryLimit: 2
+    selector:
+      matchLabels:
+        name: aplicacao-pod
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: aplicacao-pod
+      spec:
+        containers:
+        - image: rafanercessian/aplicacao-loja:v2
+          imagePullPolicy: IfNotPresent
+          name: container-aplicacao-loja
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 6
+    conditions:
+    - lastTransitionTime: "2019-10-03T16:47:57Z"
+      lastUpdateTime: "2019-10-03T16:47:57Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2019-10-03T16:47:53Z"
+      lastUpdateTime: "2019-10-03T16:47:57Z"
+      message: ReplicaSet "aplicacao-deployment-7846d8dfdb" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 6
+    replicas: 6
+    updatedReplicas: 6
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

@@ -1,0 +1,120 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "6"
+      deployment.kubernetes.io/max-replicas: "8"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2019-10-03T16:51:21Z"
+    generation: 3
+    labels:
+      name: aplicacao-pod
+      pod-template-hash: 6c7ccd87c5
+    name: aplicacao-deployment-6c7ccd87c5
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: aplicacao-deployment
+      uid: 5a561fb9-8e53-4693-8e71-bc90d4e9e58b
+    resourceVersion: "197951"
+    selfLink: /apis/extensions/v1beta1/namespaces/default/replicasets/aplicacao-deployment-6c7ccd87c5
+    uid: 781f550d-5c0b-452a-845a-49fc1d8ad219
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        name: aplicacao-pod
+        pod-template-hash: 6c7ccd87c5
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: aplicacao-pod
+          pod-template-hash: 6c7ccd87c5
+      spec:
+        containers:
+        - image: rafanercessian/aplicacao-loja:v2
+          imagePullPolicy: IfNotPresent
+          name: container-aplicacao-loja
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: extensions/v1beta1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "6"
+      deployment.kubernetes.io/max-replicas: "8"
+      deployment.kubernetes.io/revision: "3"
+      deployment.kubernetes.io/revision-history: "1"
+    creationTimestamp: "2019-10-03T16:47:53Z"
+    generation: 3
+    labels:
+      name: aplicacao-pod
+      pod-template-hash: 7846d8dfdb
+    name: aplicacao-deployment-7846d8dfdb
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: aplicacao-deployment
+      uid: 5a561fb9-8e53-4693-8e71-bc90d4e9e58b
+    resourceVersion: "198833"
+    selfLink: /apis/extensions/v1beta1/namespaces/default/replicasets/aplicacao-deployment-7846d8dfdb
+    uid: 908d3690-b0af-4419-8634-8d5f027c0411
+  spec:
+    replicas: 6
+    selector:
+      matchLabels:
+        name: aplicacao-pod
+        pod-template-hash: 7846d8dfdb
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: aplicacao-pod
+          pod-template-hash: 7846d8dfdb
+      spec:
+        containers:
+        - image: rafanercessian/aplicacao-loja:v1
+          imagePullPolicy: IfNotPresent
+          name: container-aplicacao-loja
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 6
+    fullyLabeledReplicas: 6
+    observedGeneration: 3
+    readyReplicas: 6
+    replicas: 6
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
